@@ -87,6 +87,21 @@
   .epigraph blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.4;color:var(--bone)}
   .epigraph cite{display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-style:normal;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--glow-deep)}
 
+  /* ---------- ABOUT / LANDSCAPES ---------- */
+  .about-text{max-width:60ch;color:var(--muted);font-size:1.05rem;margin-bottom:44px}
+  .about-text strong{color:var(--bone);font-weight:500}
+  .lands{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .land{position:relative;border-radius:3px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3}
+  .land img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) brightness(.82);transition:filter .5s,transform .8s}
+  .land:hover img{filter:saturate(1) brightness(1);transform:scale(1.04)}
+  .land::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,23,27,.78),rgba(10,23,27,.05) 55%);pointer-events:none}
+  .land .cap{position:absolute;left:14px;bottom:12px;z-index:2}
+  .land .cap .crop{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--bone);display:block;line-height:1.2}
+  .land .cap .place{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--glow)}
+  @media(max-width:720px){
+    .lands{grid-template-columns:1fr;gap:12px}
+  }
+
   /* ---------- SECTION SHELL ---------- */
   section.block{padding:96px 0;border-top:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:46px}
@@ -206,10 +221,34 @@
   </div>
 </section>
 
+<!-- ============ ABOUT / LANDSCAPES ============ -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Where I come from</h2></div>
+    <p class="about-text">
+      I grew up picking olives on cold Andalusian mornings, in a family that measured a year by its harvest. Science carried me from those groves to the vineyards of France's Vermeille Coast, and finally to the almond orchards of California's Central Valley. <strong>Three landscapes, three harvests, one throughline</strong>: a stubborn curiosity that has never let me stay in one place for long.
+    </p>
+    <div class="lands">
+      <div class="land">
+        <img src="land_olives.jpg" alt="Olive groves in Andalusia, Spain">
+        <div class="cap"><span class="crop">Olives</span><span class="place">Andalucía, Spain</span></div>
+      </div>
+      <div class="land">
+        <img src="land_vines.jpg" alt="Vineyards on the Vermeille Coast, France, above the Mediterranean">
+        <div class="cap"><span class="crop">Vines</span><span class="place">Vermeille Coast, France</span></div>
+      </div>
+      <div class="land">
+        <img src="land_almonds.jpg" alt="Almond orchards in bloom, Central Valley, California">
+        <div class="cap"><span class="crop">Almonds</span><span class="place">Central Valley, California</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ RESEARCH FACTS ============ -->
 <section class="block" id="research">
   <div class="wrap">
-    <div class="sec-head"><span class="num">02</span><h2>Research</h2></div>
+    <div class="sec-head"><span class="num">03</span><h2>Research</h2></div>
     <div class="epigraph">
       <blockquote>"A multiple of bacteria are stronger than a few, and thus by union are able to overcome obstacles too great for the few."</blockquote>
       <cite>Erwin F. Smith, Bacteria in Relation to Plant Diseases, 1905</cite>
@@ -228,7 +267,7 @@
 <!-- ============ WORK / BUILDS ============ -->
 <section class="block" id="builds">
   <div class="wrap">
-    <div class="sec-head"><span class="num">03</span><h2>Things I've built</h2></div>
+    <div class="sec-head"><span class="num">04</span><h2>Things I've built</h2></div>
     <div class="work">
       <div class="item">
         <div>
