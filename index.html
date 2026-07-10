@@ -34,6 +34,15 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
+  /* ---------- LANGUAGE SWITCH ---------- */
+  .langswitch{position:fixed;top:22px;right:24px;z-index:60;display:flex;gap:2px;
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+    background:rgba(14,32,39,.72);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .langswitch button{background:none;border:none;color:var(--muted);cursor:pointer;
+    padding:7px 12px;font:inherit;transition:color .2s,background .2s}
+  .langswitch button:hover{color:var(--bone)}
+  .langswitch button.active{color:var(--ink);background:var(--glow)}
+
   /* ---------- eyebrow / mono utility ---------- */
   .mono{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--glow-deep)}
 
@@ -185,6 +194,11 @@
 </head>
 <body>
 
+<div class="langswitch" role="group" aria-label="Language">
+  <button data-lang="en" class="active">EN</button>
+  <button data-lang="es">ES</button>
+</div>
+
 <!-- ============ HERO ============ -->
 <header class="hero">
   <canvas id="quorum" aria-hidden="true"></canvas>
@@ -195,15 +209,15 @@
           <div class="name">Pedro Antonio Pérez-Ferrer</div>
           <div class="tag">
             <span class="dot"></span>
-            <span class="mono">Computational &amp; Experimental Biologist</span>
+            <span class="mono" data-en="Computational &amp; Experimental Biologist" data-es="Biólogo computacional y experimental">Computational &amp; Experimental Biologist</span>
           </div>
-          <h1>I run the <em>experiment</em> and read the <em>model</em>.</h1>
-          <p class="lede">I work at the seam between the bench and the machine: <strong>host-microbe symbiosis</strong>, <strong>quorum sensing</strong>, and the AI tools that make biological data answerable. PhD in Quantitative &amp; Systems Biology, 2026.</p>
+          <h1 data-en="I run the <em>experiment</em> and read the <em>model</em>." data-es="Hago el <em>experimento</em> y leo el <em>modelo</em>.">I run the <em>experiment</em> and read the <em>model</em>.</h1>
+          <p class="lede" data-en="I work at the seam between the bench and the machine: <strong>host-microbe symbiosis</strong>, <strong>quorum sensing</strong>, and the AI tools that make biological data answerable. PhD in Quantitative &amp; Systems Biology, 2026." data-es="Trabajo en la frontera entre el laboratorio y la máquina: <strong>simbiosis hospedador-microbio</strong>, <strong>quorum sensing</strong> y las herramientas de IA que hacen que los datos biológicos tengan respuesta. Doctorado en Biología Cuantitativa y de Sistemas, 2026.">I work at the seam between the bench and the machine: <strong>host-microbe symbiosis</strong>, <strong>quorum sensing</strong>, and the AI tools that make biological data answerable. PhD in Quantitative &amp; Systems Biology, 2026.</p>
           <nav class="links">
-            <button class="btn primary copy" id="copyEmail" data-email="pperez40@ucmerced.edu">Copy email <span class="arw">⧉</span></button>
+            <button class="btn primary copy" id="copyEmail" data-email="pperez40@ucmerced.edu" data-en="Copy email" data-es="Copiar correo">Copy email <span class="arw">⧉</span></button>
             <a class="btn" href="https://github.com/Sepietta" target="_blank" rel="noopener">GitHub <span class="arw">↗</span></a>
             <a class="btn" href="https://www.linkedin.com/in/pedroantonioperezferrer/" target="_blank" rel="noopener">LinkedIn <span class="arw">↗</span></a>
-            <a class="btn" href="PedroPerez_CV_2026.pdf" download>Download CV <span class="arw">↓</span></a>
+            <a class="btn" href="PedroPerez_CV_2026.pdf" download data-en="Download CV" data-es="Descargar CV">Download CV <span class="arw">↓</span></a>
           </nav>
         </div>
         <div class="portrait">
@@ -212,47 +226,47 @@
       </div>
     </div>
   </div>
-  <div class="scrollcue">scroll ↓</div>
+  <div class="scrollcue" data-en="scroll ↓" data-es="baja ↓">scroll ↓</div>
 </header>
-<div id="toast">Email copied to clipboard</div>
+<div id="toast" data-en="Email copied to clipboard" data-es="Correo copiado al portapapeles">Email copied to clipboard</div>
 
 <!-- ============ TWO HALVES ============ -->
 <section class="block" id="approach">
   <div class="wrap">
-    <div class="sec-head"><span class="num">01</span><h2>Two halves of one loop</h2></div>
+    <div class="sec-head"><span class="num">01</span><h2 data-en="Two halves of one loop" data-es="Dos mitades de un mismo bucle">Two halves of one loop</h2></div>
     <div class="halves">
       <div class="half">
-        <h3>At the bench</h3>
-        <p>Recombinant expression and FPLC purification of difficult regulatory proteins, functional and phenotypic screening, and <strong>BSL-2 microbiology</strong>. I know what actually happens when an experiment meets reality.</p>
+        <h3 data-en="At the bench" data-es="En el laboratorio">At the bench</h3>
+        <p data-en="Recombinant expression and FPLC purification of difficult regulatory proteins, functional and phenotypic screening, and <strong>BSL-2 microbiology</strong>. I know what actually happens when an experiment meets reality." data-es="Expresión recombinante y purificación por FPLC de proteínas reguladoras difíciles, cribado funcional y fenotípico, y <strong>microbiología de nivel BSL-2</strong>. Acostumbrado a lidiar con la realidad biológica, donde nada es lo que parece.">Recombinant expression and FPLC purification of difficult regulatory proteins, functional and phenotypic screening, and <strong>BSL-2 microbiology</strong>. I know what actually happens when an experiment meets reality.</p>
       </div>
       <div class="half">
-        <h3>In silico</h3>
-        <p>Long-read genome assembly and annotation, comparative genomics on <strong>HPC</strong>, Python pipelines, and building AI tools, from fine-tuned language models to automated analysis.</p>
+        <h3 data-en="In silico" data-es="In silico">In silico</h3>
+        <p data-en="Long-read genome assembly and annotation, comparative genomics on <strong>HPC</strong>, Python pipelines, and building AI tools, from fine-tuned language models to automated analysis." data-es="Ensamblaje y anotación de genomas, genómica comparada en <strong>HPC</strong>, pipelines en Python y construcción de herramientas de IA, desde modelos de lenguaje afinados hasta análisis automatizado.">Long-read genome assembly and annotation, comparative genomics on <strong>HPC</strong>, Python pipelines, and building AI tools, from fine-tuned language models to automated analysis.</p>
       </div>
     </div>
-    <p class="bridge-note">The interesting problems live where the two <span>talk to each other</span>.</p>
+    <p class="bridge-note" data-en="The interesting problems live where the two <span>talk to each other</span>." data-es="Los problemas interesantes viven donde las dos <span>se hablan</span>.">The interesting problems live where the two <span>talk to each other</span>.</p>
   </div>
 </section>
 
 <!-- ============ ABOUT / LANDSCAPES ============ -->
 <section class="block" id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="num">02</span><h2>Where I come from</h2></div>
-    <p class="about-text">
+    <div class="sec-head"><span class="num">02</span><h2 data-en="Where I come from" data-es="De dónde vengo">Where I come from</h2></div>
+    <p class="about-text" data-en="I grew up picking olives on cold Andalusian mornings, in a family that measured a year by its harvest. Science carried me from those groves to the vineyards of France's Vermeille Coast, and finally to the almond orchards of California's Central Valley. <strong>Three landscapes, three harvests, one throughline</strong>: a stubborn curiosity that has never let me stay in one place for long." data-es="Crecí recogiendo aceitunas en frías mañanas andaluzas, en una familia que medía el año por su cosecha. La ciencia me llevó de aquellos olivares a los viñedos de la Costa Vermeille en Francia, y finalmente a los almendros del Valle Central de California. <strong>Tres paisajes, tres cosechas, un hilo común</strong>: una curiosidad pertinaz que nunca me ha dejado quedarme quieto mucho tiempo.">
       I grew up picking olives on cold Andalusian mornings, in a family that measured a year by its harvest. Science carried me from those groves to the vineyards of France's Vermeille Coast, and finally to the almond orchards of California's Central Valley. <strong>Three landscapes, three harvests, one throughline</strong>: a stubborn curiosity that has never let me stay in one place for long.
     </p>
     <div class="lands">
       <div class="land">
         <img src="land_olives.jpg" alt="Olive groves in Andalusia, Spain">
-        <div class="cap"><span class="crop">Olives</span><span class="place">Andalucía, Spain</span></div>
+        <div class="cap"><span class="crop" data-en="Olives" data-es="Aceitunas">Olives</span><span class="place">Andalucía, Spain</span></div>
       </div>
       <div class="land">
         <img src="land_vines.jpg" alt="Vineyards on the Vermeille Coast, France, above the Mediterranean">
-        <div class="cap"><span class="crop">Vines</span><span class="place">Vermeille Coast, France</span></div>
+        <div class="cap"><span class="crop" data-en="Vines" data-es="Viñas">Vines</span><span class="place">Vermeille Coast, France</span></div>
       </div>
       <div class="land">
         <img src="land_almonds.jpg" alt="Almond orchards in bloom, Central Valley, California">
-        <div class="cap"><span class="crop">Almonds</span><span class="place">Central Valley, California</span></div>
+        <div class="cap"><span class="crop" data-en="Almonds" data-es="Almendros">Almonds</span><span class="place">Central Valley, California</span></div>
       </div>
     </div>
   </div>
@@ -261,17 +275,17 @@
 <!-- ============ RESEARCH FACTS ============ -->
 <section class="block" id="research">
   <div class="wrap">
-    <div class="sec-head"><span class="num">03</span><h2>Research</h2></div>
+    <div class="sec-head"><span class="num">03</span><h2 data-en="Research" data-es="Investigación">Research</h2></div>
     <div class="epigraph">
-      <blockquote>"A multiple of bacteria are stronger than a few, and thus by union are able to overcome obstacles too great for the few."</blockquote>
+      <blockquote data-en="&quot;A multiple of bacteria are stronger than a few, and thus by union are able to overcome obstacles too great for the few.&quot;" data-es="«Una multitud de bacterias es más fuerte que unas pocas y, por su unión, es capaz de superar obstáculos demasiado grandes para unas pocas.»">"A multiple of bacteria are stronger than a few, and thus by union are able to overcome obstacles too great for the few."</blockquote>
       <cite>Erwin F. Smith, Bacteria in Relation to Plant Diseases, 1905</cite>
     </div>
     <div class="facts">
-      <div class="fact"><div class="n">2</div><div class="l">new <em>Aliivibrio</em> species discovered, described, and given their first genome assemblies</div></div>
-      <div class="fact"><div class="n">7</div><div class="l">peer-reviewed publications (including manuscripts in review)</div></div>
-      <div class="fact"><div class="n">3</div><div class="l">countries where I've done research: Spain, France, and the U.S.</div></div>
+      <div class="fact"><div class="n">2</div><div class="l" data-en="new <em>Aliivibrio</em> species discovered, described, and given their first genome assemblies" data-es="nuevas especies de <em>Aliivibrio</em> descubiertas, descritas y con su primer ensamblaje genómico">new <em>Aliivibrio</em> species discovered, described, and given their first genome assemblies</div></div>
+      <div class="fact"><div class="n">7</div><div class="l" data-en="peer-reviewed publications (including manuscripts in review)" data-es="publicaciones revisadas por pares (incluidos manuscritos en revisión)">peer-reviewed publications (including manuscripts in review)</div></div>
+      <div class="fact"><div class="n">3</div><div class="l" data-en="countries where I've done research: Spain, France, and the U.S." data-es="países donde he investigado: España, Francia y EE. UU.">countries where I've done research: Spain, France, and the U.S.</div></div>
     </div>
-    <p style="color:var(--muted);margin-top:26px;max-width:64ch">
+    <p style="color:var(--muted);margin-top:26px;max-width:64ch" data-en="My doctoral work maps the molecular and genomic basis of the symbiosis between <em>Sepiola</em> squids and their bioluminescent <em>Vibrio</em> symbionts, a tractable model for how hosts and microbes communicate, using the same quorum-sensing chemistry that governs disease in pathogens." data-es="Mi trabajo doctoral cartografía la base molecular y genómica de la simbiosis entre las sepiolas (<em>Sepiola</em>) y sus simbiontes bioluminiscentes <em>Vibrio</em>, un modelo abordable de cómo hospedadores y microbios se comunican, mediante la misma química de quorum sensing que gobierna la enfermedad en patógenos.">
       My doctoral work maps the molecular and genomic basis of the symbiosis between <em>Sepiola</em> squids and their bioluminescent <em>Vibrio</em> symbionts, a tractable model for how hosts and microbes communicate, using the same quorum-sensing chemistry that governs disease in pathogens.
     </p>
   </div>
@@ -280,24 +294,24 @@
 <!-- ============ WORK / BUILDS ============ -->
 <section class="block" id="builds">
   <div class="wrap">
-    <div class="sec-head"><span class="num">04</span><h2>Things I've built</h2></div>
+    <div class="sec-head"><span class="num">04</span><h2 data-en="Things I've built" data-es="Cosas que he construido">Things I've built</h2></div>
     <div class="work">
       <div class="item featured">
         <div>
-          <div class="flabel">◆ Live project</div>
+          <div class="flabel" data-en="◆ Live project" data-es="◆ Proyecto en vivo">◆ Live project</div>
           <a class="t big" href="https://clinical-trial-project.vercel.app/" target="_blank" rel="noopener">TrialScope</a>
-          <div class="d">A web app to search clinical trials worldwide, with eligibility matching and email alerts, built as an installable progressive web app. Live and running, try it.</div>
+          <div class="d" data-en="A web app to search clinical trials worldwide, with eligibility matching and email alerts, built as an installable progressive web app. Live and running, try it." data-es="Una app web para buscar ensayos clínicos en todo el mundo, con comprobación de elegibilidad y alertas por correo, construida como aplicación web progresiva instalable. En vivo y funcionando, pruébala.">A web app to search clinical trials worldwide, with eligibility matching and email alerts, built as an installable progressive web app. Live and running, try it.</div>
           <div class="tags"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PWA</span><span class="chip">health</span></div>
           <div class="actions">
-            <a class="go demo" href="https://clinical-trial-project.vercel.app/" target="_blank" rel="noopener">Open the app →</a>
-            <a class="go code" href="https://github.com/Sepietta/clinical-trial-project" target="_blank" rel="noopener">View code ↗</a>
+            <a class="go demo" href="https://clinical-trial-project.vercel.app/" target="_blank" rel="noopener" data-en="Open the app →" data-es="Abrir la app →">Open the app →</a>
+            <a class="go code" href="https://github.com/Sepietta/clinical-trial-project" target="_blank" rel="noopener" data-en="View code ↗" data-es="Ver código ↗">View code ↗</a>
           </div>
         </div>
       </div>
       <div class="item">
         <div>
           <a class="t" href="https://github.com/Sepietta/symbiosis-abstract-llm" target="_blank" rel="noopener">symbiosis-abstract-llm ↗</a>
-          <div class="d">An end-to-end NLP pipeline that fine-tunes BioBERT to sort symbiosis literature into functional categories (quorum sensing, biofilm, motility, host interaction), with automated PubMed collection, HPC training, and topic modeling.</div>
+          <div class="d" data-en="An end-to-end NLP pipeline that fine-tunes BioBERT to sort symbiosis literature into functional categories (quorum sensing, biofilm, motility, host interaction), with automated PubMed collection, HPC training, and topic modeling." data-es="Un pipeline de PLN de principio a fin que afina BioBERT para clasificar la literatura sobre simbiosis en categorías funcionales (quorum sensing, biofilm, motilidad, interacción con el hospedador), con recolección automática de PubMed, entrenamiento en HPC y modelado de temas.">An end-to-end NLP pipeline that fine-tunes BioBERT to sort symbiosis literature into functional categories (quorum sensing, biofilm, motility, host interaction), with automated PubMed collection, HPC training, and topic modeling.</div>
           <div class="tags"><span class="chip">BioBERT</span><span class="chip">Python</span><span class="chip">SLURM / HPC</span><span class="chip">NLP</span></div>
         </div>
         <div class="meta">AI · biology</div>
@@ -305,7 +319,7 @@
       <div class="item">
         <div>
           <a class="t" href="https://github.com/Sepietta/food-safety-ai-pipeline" target="_blank" rel="noopener">food-safety-ai-pipeline ↗</a>
-          <div class="d">AI-assisted automation of microbiological reporting for food-safety labs: FSMA validation, FDA recall intelligence, and audit-ready PDF generation.</div>
+          <div class="d" data-en="AI-assisted automation of microbiological reporting for food-safety labs: FSMA validation, FDA recall intelligence, and audit-ready PDF generation." data-es="Automatización asistida por IA de informes microbiológicos para laboratorios de seguridad alimentaria: validación FSMA, inteligencia de retiradas de la FDA y generación de PDF listos para auditoría.">AI-assisted automation of microbiological reporting for food-safety labs: FSMA validation, FDA recall intelligence, and audit-ready PDF generation.</div>
           <div class="tags"><span class="chip">Python</span><span class="chip">LLMs</span><span class="chip">automation</span></div>
         </div>
         <div class="meta">AI · applied</div>
@@ -449,6 +463,32 @@
   document.querySelectorAll('.copyLink').forEach(function(a){
     a.addEventListener('click',function(e){e.preventDefault();copy(a.dataset.email);});
   });
+})();
+
+// ---- language switch (EN / ES) ----
+(function(){
+  function apply(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-'+lang+']').forEach(function(el){
+      var val = el.getAttribute('data-'+lang);
+      if(val === null) return;
+      // preserve a trailing icon span (e.g. arrows) if present
+      var icon = el.querySelector('.arw');
+      if(icon){
+        el.innerHTML = val + ' ' + icon.outerHTML;
+      } else {
+        el.innerHTML = val;
+      }
+    });
+    document.querySelectorAll('.langswitch button').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+  document.querySelectorAll('.langswitch button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.lang); });
+  });
+  // default English
+  apply('en');
 })();
 </script>
 </body>
