@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Antonio Pérez-Ferrer | Computational & Experimental Biologist</title>
+<meta name="description" content="Computational and experimental biologist working on host-microbe symbiosis, quorum sensing, and AI tools for biology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A171B;
+    --ink-2:#0E2027;
+    --ink-3:#142C34;
+    --line:#1D3A42;
+    --glow:#5FE6C4;
+    --glow-deep:#29B8A6;
+    --amber:#F0C98A;
+    --bone:#EAF1ED;
+    --muted:#8AA5A0;
+    --maxw:1000px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- eyebrow / mono utility ---------- */
+  .mono{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--glow-deep)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+  #quorum{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .hero-inner{position:relative;z-index:2;width:100%}
+  .hero .wrap{padding-top:80px;padding-bottom:80px}
+  .tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+  .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--glow);box-shadow:0 0 12px var(--glow)}
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(2.6rem,7vw,5.3rem);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin-bottom:28px;
+    max-width:16ch;
+  }
+  h1 em{font-style:italic;color:var(--glow)}
+  .lede{font-size:clamp(1.05rem,1.9vw,1.3rem);color:var(--muted);max-width:52ch;margin-bottom:40px}
+  .lede strong{color:var(--bone);font-weight:500}
+  .links{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.02em;
+    padding:11px 18px;border:1px solid var(--line);border-radius:2px;
+    display:inline-flex;align-items:center;gap:9px;
+    transition:border-color .25s,color .25s,background .25s;
+  }
+  .btn:hover,.btn:focus-visible{border-color:var(--glow);color:var(--glow);background:rgba(95,230,196,.05)}
+  .btn.primary{border-color:var(--glow-deep);color:var(--glow)}
+  .btn .arw{opacity:.5;transition:transform .25s,opacity .25s}
+  .btn:hover .arw{transform:translateX(3px);opacity:1}
+  .scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;opacity:.7}
+
+  /* ---------- EPIGRAPH ---------- */
+  .epigraph{border-left:2px solid var(--glow-deep);padding:6px 0 6px 26px;margin-bottom:44px;max-width:60ch}
+  .epigraph blockquote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.4;color:var(--bone)}
+  .epigraph cite{display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-style:normal;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--glow-deep)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{padding:96px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:46px}
+  .sec-head .num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--glow-deep)}
+  .sec-head h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.01em}
+
+  /* ---------- TWO HALVES ---------- */
+  .halves{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .half{background:var(--ink-2);padding:34px 30px}
+  .half:hover{background:var(--ink-3)}
+  .half h3{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--glow);margin-bottom:18px}
+  .half p{color:var(--muted);font-size:.98rem}
+  .half p strong{color:var(--bone);font-weight:500}
+  .bridge-note{margin-top:26px;text-align:center;font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--bone)}
+  .bridge-note span{color:var(--glow)}
+
+  /* ---------- WORK ---------- */
+  .work{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .item{background:var(--ink-2);padding:26px 30px;display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:start;transition:background .2s}
+  .item:hover{background:var(--ink-3)}
+  .item .t{font-family:'Fraunces',serif;font-size:1.28rem;margin-bottom:5px}
+  .item .d{color:var(--muted);font-size:.95rem;max-width:60ch}
+  .item .meta{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--glow-deep);text-align:right;white-space:nowrap;padding-top:6px}
+  .item a.t:hover{color:var(--glow)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:3px 8px}
+
+  /* ---------- SELECTED FACTS ---------- */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .fact{background:var(--ink-2);padding:30px 26px}
+  .fact .n{font-family:'Fraunces',serif;font-size:2.4rem;line-height:1;color:var(--glow);margin-bottom:10px}
+  .fact .l{color:var(--muted);font-size:.9rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:70px 0 60px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:30px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px}
+  .foot-links a{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:2px;transition:color .2s,border-color .2s}
+  .foot-links a:hover,.foot-links a:focus-visible{color:var(--glow);border-color:var(--glow)}
+  .sig{font-family:'Fraunces',serif;font-style:italic;color:var(--muted);font-size:.95rem}
+  .loc{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--glow-deep);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+
+  :focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px}
+
+  @media(max-width:720px){
+    .halves,.facts{grid-template-columns:1fr}
+    .item{grid-template-columns:1fr}
+    .item .meta{text-align:left}
+    section.block{padding:72px 0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <canvas id="quorum" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="tag">
+        <span class="dot"></span>
+        <span class="mono">Computational &amp; Experimental Biologist</span>
+      </div>
+      <h1>I run the <em>experiment</em> and read the <em>model</em>.</h1>
+      <p class="lede">I work at the seam between the bench and the machine: <strong>host-microbe symbiosis</strong>, <strong>quorum sensing</strong>, and the AI tools that make biological data answerable. PhD in Quantitative &amp; Systems Biology, 2026.</p>
+      <nav class="links">
+        <a class="btn primary" href="mailto:pperez40@ucmerced.edu">Get in touch <span class="arw">→</span></a>
+        <a class="btn" href="https://github.com/Sepietta" target="_blank" rel="noopener">GitHub <span class="arw">↗</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/pedroantonioperezferrer/" target="_blank" rel="noopener">LinkedIn <span class="arw">↗</span></a>
+        <a class="btn" href="PedroPerez_CV_2026.pdf" download>Download CV <span class="arw">↓</span></a>
+      </nav>
+    </div>
+  </div>
+  <div class="scrollcue">scroll ↓</div>
+</header>
+
+<!-- ============ TWO HALVES ============ -->
+<section class="block" id="approach">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Two halves of one loop</h2></div>
+    <div class="halves">
+      <div class="half">
+        <h3>At the bench</h3>
+        <p>Recombinant expression and FPLC purification of difficult regulatory proteins, functional and phenotypic screening, and <strong>BSL-2 microbiology</strong>. I know what actually happens when an experiment meets reality.</p>
+      </div>
+      <div class="half">
+        <h3>In silico</h3>
+        <p>Long-read genome assembly and annotation, comparative genomics on <strong>HPC</strong>, Python pipelines, and building AI tools, from fine-tuned language models to automated analysis.</p>
+      </div>
+    </div>
+    <p class="bridge-note">The interesting problems live where the two <span>talk to each other</span>.</p>
+  </div>
+</section>
+
+<!-- ============ RESEARCH FACTS ============ -->
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Research</h2></div>
+    <div class="epigraph">
+      <blockquote>"A multiple of bacteria are stronger than a few, and thus by union are able to overcome obstacles too great for the few."</blockquote>
+      <cite>Erwin F. Smith, Bacteria in Relation to Plant Diseases, 1905</cite>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="n">2</div><div class="l">new <em>Aliivibrio</em> species discovered, described, and given their first genome assemblies</div></div>
+      <div class="fact"><div class="n">7</div><div class="l">peer-reviewed publications (including manuscripts in review)</div></div>
+      <div class="fact"><div class="n">3</div><div class="l">countries where I've done research: Spain, France, and the U.S.</div></div>
+    </div>
+    <p style="color:var(--muted);margin-top:26px;max-width:64ch">
+      My doctoral work maps the molecular and genomic basis of the symbiosis between <em>Sepiola</em> squids and their bioluminescent <em>Vibrio</em> symbionts, a tractable model for how hosts and microbes communicate, using the same quorum-sensing chemistry that governs disease in pathogens.
+    </p>
+  </div>
+</section>
+
+<!-- ============ WORK / BUILDS ============ -->
+<section class="block" id="builds">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Things I've built</h2></div>
+    <div class="work">
+      <div class="item">
+        <div>
+          <a class="t" href="https://github.com/Sepietta/symbiosis-abstract-llm" target="_blank" rel="noopener">symbiosis-abstract-llm ↗</a>
+          <div class="d">An end-to-end NLP pipeline that fine-tunes BioBERT to sort symbiosis literature into functional categories (quorum sensing, biofilm, motility, host interaction), with automated PubMed collection, HPC training, and topic modeling.</div>
+          <div class="tags"><span class="chip">BioBERT</span><span class="chip">Python</span><span class="chip">SLURM / HPC</span><span class="chip">NLP</span></div>
+        </div>
+        <div class="meta">AI · biology</div>
+      </div>
+      <div class="item">
+        <div>
+          <a class="t" href="https://github.com/Sepietta/food-safety-ai-pipeline" target="_blank" rel="noopener">food-safety-ai-pipeline ↗</a>
+          <div class="d">AI-assisted automation of microbiological reporting for food-safety labs: FSMA validation, FDA recall intelligence, and audit-ready PDF generation.</div>
+          <div class="tags"><span class="chip">Python</span><span class="chip">LLMs</span><span class="chip">automation</span></div>
+        </div>
+        <div class="meta">AI · applied</div>
+      </div>
+      <div class="item">
+        <div>
+          <a class="t" href="https://github.com/Sepietta" target="_blank" rel="noopener">clinical-trial finder ↗</a>
+          <div class="d">A web app to search clinical trials worldwide, with eligibility matching and email alerts, built as a progressive web app.</div>
+          <div class="tags"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PWA</span></div>
+        </div>
+        <div class="meta">web · health</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="sig">Pedro Antonio Pérez-Ferrer</div>
+        <div class="loc">Merced, California</div>
+      </div>
+      <nav class="foot-links">
+        <a href="mailto:pperez40@ucmerced.edu">email</a>
+        <a href="https://github.com/Sepietta" target="_blank" rel="noopener">github</a>
+        <a href="https://www.linkedin.com/in/pedroantonioperezferrer/" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://scholar.google.com/citations?user=sy2dCVAAAAAJ&hl=es" target="_blank" rel="noopener">scholar</a>
+        <a href="PedroPerez_CV_2026.pdf" download>cv</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('quorum');
+  if(!c) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx = c.getContext('2d');
+  var W,H,dots,dpr;
+
+  function rand(a,b){return a+Math.random()*(b-a);}
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W*dpr; c.height = H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+
+  function build(){
+    var n = Math.max(26, Math.min(70, Math.floor(W*H/16000)));
+    dots = [];
+    for(var i=0;i<n;i++){
+      dots.push({
+        x:rand(0,W), y:rand(0,H),
+        r:rand(1,2.4),
+        vx:rand(-0.12,0.12), vy:rand(-0.12,0.12),
+        base:rand(0.05,0.18),   // faint resting glow
+        phase:rand(0,Math.PI*2)
+      });
+    }
+  }
+
+  var t=0, waveT=-3;
+  function frame(){
+    t+=0.006;
+    // a "quorum wave" sweeps periodically: cells sense threshold and light up together
+    waveT+=0.004;
+    if(waveT>1.6) waveT=-2.2;   // pause between waves
+    var wave = waveT>=0 && waveT<=1 ? Math.sin(waveT*Math.PI) : 0; // 0..1..0
+
+    ctx.clearRect(0,0,W,H);
+
+    // soft ambient vignette of light near center-left (the "light organ")
+    var g = ctx.createRadialGradient(W*0.32,H*0.45,0,W*0.32,H*0.45,Math.max(W,H)*0.7);
+    g.addColorStop(0,'rgba(41,184,166,'+(0.05+wave*0.05)+')');
+    g.addColorStop(1,'rgba(41,184,166,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+
+    for(var i=0;i<dots.length;i++){
+      var d=dots[i];
+      d.x+=d.vx; d.y+=d.vy;
+      if(d.x<0)d.x=W; if(d.x>W)d.x=0; if(d.y<0)d.y=H; if(d.y>H)d.y=0;
+      var flick = 0.5+0.5*Math.sin(t*2+d.phase);
+      var glow = d.base + wave*0.75*flick;      // synchronize brightness during the wave
+      glow = Math.min(glow,0.95);
+      var rad = d.r*(1+wave*1.4);
+
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,rad,0,Math.PI*2);
+      ctx.fillStyle='rgba(95,230,196,'+glow+')';
+      ctx.shadowColor='rgba(95,230,196,'+glow+')';
+      ctx.shadowBlur=8+wave*14;
+      ctx.fill();
+    }
+    ctx.shadowBlur=0;
+    requestAnimationFrame(frame);
+  }
+
+  function staticField(){
+    ctx.clearRect(0,0,W,H);
+    var g = ctx.createRadialGradient(W*0.32,H*0.45,0,W*0.32,H*0.45,Math.max(W,H)*0.7);
+    g.addColorStop(0,'rgba(41,184,166,0.07)');
+    g.addColorStop(1,'rgba(41,184,166,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<dots.length;i++){
+      var d=dots[i];
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(95,230,196,'+(d.base+0.15)+')';
+      ctx.shadowColor='rgba(95,230,196,0.4)';
+      ctx.shadowBlur=8;
+      ctx.fill();
+    }
+    ctx.shadowBlur=0;
+  }
+
+  window.addEventListener('resize',resize);
+  resize();
+  if(reduce){ staticField(); } else { requestAnimationFrame(frame); }
+})();
+</script>
+</body>
+</html>
